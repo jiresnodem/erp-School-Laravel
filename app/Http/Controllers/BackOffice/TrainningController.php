@@ -28,9 +28,10 @@ class TrainningController extends Controller
         return view('BackOffice.trainning.create');
     }
 
-    public function showTrainning()
+    public function showTrainning($id)
     {
-        return view('BackOffice.trainning.showTrainning');
+        $trainning = Trainning::find($id);
+        return view('BackOffice.trainning.showTrainning', compact('trainning'));
     }
 
     /**
@@ -40,10 +41,11 @@ class TrainningController extends Controller
      */
     public function trainningStore(Request $request)
     {
+   
         $validatedData = Validator::make($request->all(), [
 
             'title' => 'required|unique:trainnings|max:255',
-            'amount' =>  Rule::requiredIf($request->amount === ($request->first_slice + $request->second_slice + $request->third_slice)),
+            'amount' => 'required',
             'first_slice' => 'required',
             'second_slice' => 'required',
             'third_slice' => 'required',
@@ -59,26 +61,28 @@ class TrainningController extends Controller
                 ->withInput();
         }
 
-        // dd($request->image);
         try {
-            $data = new Trainning();
-            $data->title = $request->title;
-            $data->duration = $request->duration;
-            $data->amount = $request->amount;
-            $data->first_slice = $request->first_slice;
-            $data->second_slice = $request->second_slice;
-            $data->third_slice = $request->third_slice;
-            $data->short_description = $request->short_description;
-            $data->long_description = $request->long_description;
+            if ($request->amount == ($request->first_slice + $request->second_slice + $request->third_slice)) {
+                $data = new Trainning();
+                $data->title = $request->title;
+                $data->duration = $request->duration;
+                $data->amount = $request->amount;
+                $data->first_slice = $request->first_slice;
+                $data->second_slice = $request->second_slice;
+                $data->third_slice = $request->third_slice;
+                $data->short_description = $request->short_description;
+                $data->long_description = $request->long_description;
 
-            if ($request->image) {
-                $file = $request->image;
-                $filename = date('YmdHi') . '_' . $request->title . '.' . $file->extension();
-                $file->move(public_path('upload/formation_images'), $filename);
-                $data->trainning_photo_path = $filename;
-                // dd($filename);
+                if ($request->image) {
+                    $file = $request->image;
+                    $filename = date('YmdHi') . '_' . $request->title . '.' . $file->extension();
+                    $file->move(public_path('upload/trainning_images'), $filename);
+                    $data->trainning_photo_path = $filename;
+                    // dd($filename);
+                }
+            } else {
+                return redirect()->back()->withErrors(['amount' => 'The installment sum must be equal to the amount ']);
             }
-
 
             $data->save();
             Toastr::success('Successfully !!!', 'Registration', ["positionClass" => "toast-top-right"]);
@@ -100,7 +104,7 @@ class TrainningController extends Controller
     {
         $trainning = Trainning::find($id);
 
-        return view('BackOffice.create.index', compact($trainning));
+        return view('BackOffice.trainning.create', compact('trainning'));
     }
 
     /**
@@ -116,8 +120,8 @@ class TrainningController extends Controller
 
         $validatedData = $request->validate([
 
-            'title' => 'required|unique:trainnings',
-            'amount' =>  Rule::requiredIf($request->amount === ($request->first_slice + $request->second_slice + $request->third_slice)),
+            'title' => 'required',
+            'amount' =>  'required',
             'first_slice' => 'required',
             'second_slice' => 'required',
             'third_slice' => 'required',
@@ -128,29 +132,33 @@ class TrainningController extends Controller
         ]);
 
         try {
-            $data = Trainning::find($id);
-            $data->title = $request->title;
-            $data->duration = $request->duration;
-            $data->amount = $request->amount;
-            $data->first_slice = $request->first_slice;
-            $data->second_slice = $request->second_slice;
-            $data->third_slice = $request->third_slice;
-            $data->short_description = $request->short_description;
-            $data->long_description = $request->long_description;
+            if ($request->amount == ($request->first_slice + $request->second_slice + $request->third_slice)) {
+        $data = Trainning::find($id);
+        $data->title = $request->title;
+        $data->duration = $request->duration;
+        $data->amount = $request->amount;
+        $data->first_slice = $request->first_slice;
+        $data->second_slice = $request->second_slice;
+        $data->third_slice = $request->third_slice;
+        $data->short_description = $request->short_description;
+        $data->long_description = $request->long_description;
 
-            if ($request->file('image')) {
-                $file = $request->file('image');
-                @unlink(public_path('upload/user_images/' . $data->image));
-                $filename = date('YmdHi') . $file->getClientOriginalName();
-                $file->move(public_path('upload/user_images'), $filename);
-                $data->formation_photo_path = $filename;
-            }
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . '_' . $request->title . '.' . $file->extension();
+            $file->move(public_path('upload/trainning_images'), $filename);
+            $data->trainning_photo_path = $filename;
+        }
+    } else {
+        return redirect()->back()->withErrors(['amount' => 'The installment sum must be equal to the amount ']);
+    }
 
-            $data->update();
-            Toastr::success('Successfully !!!', 'Modification', ["positionClass" => "toast-top-right"]);
+        $data->update();
+        Toastr::success('Successfully !!!', 'Modification', ["positionClass" => "toast-top-right"]);
         } catch (Exception $e) {
             Toastr::info('Failed!', 'Modification', ["positionClass" => "toast-top-right"]);
         }
+
 
         return redirect()->route('trainning.list');
     }

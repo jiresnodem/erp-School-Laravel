@@ -17,7 +17,7 @@ return new class extends Migration
            
             $table->bigIncrements('id');
             $table->string('title')->unique();
-            $table->integer('duration');
+            $table->string('duration');
             $table->double('amount');
             $table->double('first_slice');
             $table->double('second_slice');

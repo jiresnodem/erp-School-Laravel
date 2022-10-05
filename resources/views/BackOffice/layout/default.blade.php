@@ -415,14 +415,28 @@
                 </li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class="bx bx-folder"></i>
+                        </div>
+                        <div class="menu-title">Trainning</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('trainning.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
+                        </li>
+                        <li> <a href="{{ route('trainning.create') }}"><i class="bx bx-right-arrow-alt"></i>Add trainning</a>
+                        </li>
+                    </ul>
+                </li>
+            
+                <li>
+                    <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class="bx bx-category"></i>
                         </div>
                         <div class="menu-title">Student</div>
                     </a>
                     <ul>
-                        <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>List</a>
+                        <li> <a href="{{ route('student.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
                         </li>
-                        <li> <a href="dashboard-alternate.html"><i class="bx bx-right-arrow-alt"></i>Inscription</a>
+                        <li><a href="{{ route('student.create') }}"><i class="bx bx-right-arrow-alt"></i>Inscription</a>
                         </li>
                     </ul>
                 </li>
@@ -480,13 +494,6 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="https://codervent.com/rocker/documentation/" target="_blank">
-                        <div class="parent-icon"><i class="bx bx-folder"></i>
-                        </div>
-                        <div class="menu-title">Documentation</div>
-                    </a>
-                </li>
                 <li>
                     <a href="https://themeforest.net/user/codervent" target="_blank">
                         <div class="parent-icon"><i class="bx bx-support"></i>

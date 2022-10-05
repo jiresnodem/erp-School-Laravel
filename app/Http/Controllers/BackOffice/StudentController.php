@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\BackOffice;
 
 use Exception;
+
+
 use App\Models\Student;
 use App\Models\Trainning;
 use Illuminate\Http\Request;
@@ -19,16 +21,17 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all()->formation();
+        $students = Student::all();
 
-        return view('BackOffice.student.index', compact($students));
+
+        return view('BackOffice.student.index', compact('students'));
     }
 
     public function ShowRegistration()
     {
-        $trainning = Trainning::all();
+        $trainnings = Trainning::all();
 
-        return view('BackOffice.student.create', compact('trainning'));
+        return view('BackOffice.student.create', compact('trainnings'));
     }
 
     /**
@@ -39,6 +42,7 @@ class StudentController extends Controller
     public function studentStore(Request $request)
     {
 
+
         $validatedData = Validator::make($request->all(), [
 
             'email' => 'required|unique:students',
@@ -47,7 +51,8 @@ class StudentController extends Controller
             'student_phone' => 'required',
             'trainning_id' => 'required',
             'registration_fees' => 'required',
-
+            'pay_type' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
 
         ]);
 
@@ -59,10 +64,11 @@ class StudentController extends Controller
         }
 
         try {
-            $trainning = (Trainning::find($request->trainning_id))->title();
+            $trainning = Trainning::find($request->trainning_id)->title;
+            
+            $matricule = date('Y', time()) . '-' . substr($trainning, 0, 3) . random_int(1, 2022);
 
-            $matricule = date('Y', time()) . '-' . substr($trainning, 3) . random_int(2, 3);
-
+            
             $data = new Student();
             $data->first_name = $request->first_name;
             $data->last_name = $request->last_name;
@@ -74,14 +80,13 @@ class StudentController extends Controller
             $data->registration_fees = $request->registration_fees;
             $data->parent_name = $request->parent_name;
             $data->parent_phone = $request->parent_phone;
-            $data->complet_pay = $request->complet_pay;
-            $data->slice_pay = $request->slice_pay;
+            $data->pay_type = $request->pay_type;
             $data->trainning_id = $request->trainning_id;
 
             if ($request->file('image')) {
                 $file = $request->file('image');
                 @unlink(public_path('upload/user_images/' . $data->image));
-                $filename = date('YmdHi') . $file->getClientOriginalName();
+                $filename = date('YmdHi') .'_'. $request->first_name.$request->last_name.'.'.$file->extension();
                 $file->move(public_path('upload/Student_images'), $filename);
                 $data->student_photo_path = $filename;
             }
@@ -92,19 +97,6 @@ class StudentController extends Controller
             Toastr::info('Faild!', 'Registration', ["positionClass" => "toast-top-right"]);
         }
         return redirect()->back();
-    }
-
-    /**
-     * Store a newly read resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function readALlStudent()
-    {
-        $students = Student::all();
-
-        return view('student.index', compact($students));
     }
 
 
@@ -118,7 +110,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
-        return view('BackOffice.student.showStudent', compact($student));
+        return view('BackOffice.student.showStudent', compact('student'));
     }
 
 
@@ -131,8 +123,9 @@ class StudentController extends Controller
     public function editStudent($id)
     {
         $student = Student::find($id);
+        $trainnings = Trainning::all();
 
-        return view('BackOffice.student.create', compact($student));
+        return view('BackOffice.student.editStudent', compact('student', 'trainnings'));
     }
 
     /**
@@ -148,11 +141,14 @@ class StudentController extends Controller
 
         $validatedData = Validator::make($request->all(), [
 
-            'email' => 'required|unique:students',
+            'email' => 'required',
             'last_name' => 'required',
             'first_name' => 'required',
             'student_phone' => 'required',
             'trainning_id' => 'required',
+            'registration_fees' => 'required',
+            'pay_type' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
 
         if ($validatedData->fails()) {
@@ -162,7 +158,7 @@ class StudentController extends Controller
                 ->withInput();
         }
 
-        try {
+        // try {
             $data = Student::find($id);
             $data->first_name = $request->first_name;
             $data->last_name = $request->last_name;
@@ -172,22 +168,23 @@ class StudentController extends Controller
             $data->student_phone = $request->student_phone;
             $data->parent_name = $request->parent_name;
             $data->parent_phone = $request->parent_phone;
+            $data->pay_type = $request->pay_type;
             $data->trainning_id = $request->trainning_id;
 
 
             if ($request->file('image')) {
                 $file = $request->file('image');
                 @unlink(public_path('upload/user_images/' . $data->image));
-                $filename = date('YmdHi') . $file->getClientOriginalName();
+                $filename = date('YmdHi') .'_'. $request->first_name.$request->last_name.'.'.$file->extension();
                 $file->move(public_path('upload/Student_images'), $filename);
                 $data->student_photo_path = $filename;
             }
 
             $data->update();
-            Toastr::success('Successfully !!!', 'Modification', ["positionClass" => "toast-top-right"]);
-        } catch (Exception $e) {
-            Toastr::info('Failed!', 'Modification', ["positionClass" => "toast-top-right"]);
-        }
+           Toastr::success('Successfully !!!', 'Modification', ["positionClass" => "toast-top-right"]);
+        // } catch (Exception $e) {
+        //     Toastr::info('Failed!', 'Modification', ["positionClass" => "toast-top-right"]);
+        // } 
 
         return redirect()->route('student.list');
     }

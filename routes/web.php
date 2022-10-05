@@ -3,6 +3,8 @@
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\BackOffice\DashboardController;
 use App\Http\Controllers\BackOffice\UserController;
+use App\Http\Controllers\BackOffice\TrainningController;
+use App\Http\Controllers\BackOffice\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,22 +30,30 @@ route::prefix('/admin')->middleware(['auth', 'role:normal'])->group(
 
         Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
 
-//student
+        //mananger trainning
+        Route::get('trainnings', [TrainningController::class, 'index'])->name('trainning.list');
+        Route::get('trainning_create', [TrainningController::class, 'showCreate'])->name('trainning.create');
+        Route::post('trainning_add', [TrainningController::class, 'trainningStore'])->name('trainning.add');
+        Route::get('trainning_edit/{id}', [TrainningController::class, 'editTrainning'])->name('trainning.edit');
+        Route::post('trainning_update/{id}', [TrainningController::class, 'UpdateTrainning'])->name('trainning.update');
+        Route::get('trainning_delete/{id}', [TrainningController::class, 'delete'])->name('trainning.delete');
+        Route::get('trainning_detail/{id}', [TrainningController::class, 'showTrainning'])->name('trainning.detail');
 
-   Route::get('/student_list', [UserController::class, 'studentList'])->name('student.list');
-   Route::get('/student_list', [UserController::class, 'studentList'])->name('student.list');
-   Route::post('/student_created', [UserController::class, 'userStore'])->name('student.created');
+        //mananger student
+        Route::get('students', [StudentController::class, 'index'])->name('student.list');
+        Route::get('student_create', [StudentController::class, 'ShowRegistration'])->name('student.create');
+        Route::post('student_add', [StudentController::class, 'studentStore'])->name('student.add');
+        Route::get('student_edit/{id}', [StudentController::class, 'editStudent'])->name('student.edit');
+        Route::post('student_update/{id}', [StudentController::class, 'UpdateStudent'])->name('student.update');
+        Route::get('student_delete/{id}', [StudentController::class, 'deleteStudent'])->name('student.delete');
+        Route::get('student_detail/{id}', [StudentController::class, 'showStudent'])->name('student.detail');
 
 
-       
-       
-       
-       
-       
-       
+
+
+
         //manage user
         Route::get('/users_list', [UserController::class, 'UserList'])->name('user.list');
-
         Route::post('/user_created', [UserController::class, 'userStore'])->name('user.created');
         Route::get('/show_user/{id}', [UserController::class, 'showUser'])->name('show.user');
         Route::get('/user_edited/{id}', [UserController::class, 'editUser'])->name('user.edited');

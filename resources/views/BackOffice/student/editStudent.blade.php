@@ -39,11 +39,11 @@
                                 <label for="inputFirstName" class="col-sm-3 col-form-label">Gender</label>
                                 <div class="col-sm-9 mt-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="radio1" value='male'   >
+                                        <input class="form-check-input" type="radio" name="gender" id="radio1" value='male' @if($student->gender == 'male') checked @endif >
                                         <label class="form-check-label" for="radio1">Male</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="radio2" value='feminine'  >
+                                        <input class="form-check-input" type="radio" name="gender" id="radio2" value='feminine' @if($student->gender == 'feminine') checked @endif  >
                                         <label class="form-check-label" for="radio2">Feminine</label>
                                     </div>
                                     @error('gender')
@@ -51,7 +51,7 @@
                                     @enderror
                                 </div>
                             </div>
-
+ 
                             <div class="row mb-3">
                                 <label for="student_phone" class="col-sm-3 col-form-label">Phone No</label>
                                 <div class="col-sm-9">
@@ -76,7 +76,7 @@
                             <div class="row mb-3">
                                 <label for="student_photo_path" class="col-sm-3 col-form-label">Trainning picture</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control-file" name="image" id="student_photo_path"  value="{{isset($student->student_photo_path)? $student->student_photo_path :""}}" accept=".png, .jpg, .jpeg">
+                                    <input type="file" class="form-control-file" name="image" id="student_photo_path"  value="{{isset($student->student_photo_path)? $student->student_photo_path :''}}" accept=".png, .jpg, .jpeg">
                                   
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                 <div class="col-sm-9">
                                     <select name="trainning_id" class="form-control">
                                         @foreach($trainnings as $trainning)
-                                        <option value="{{ $trainning->id }}"   >{{ $trainning->title }}</option>
+                                        <option value="{{ $trainning->id }}"  @if($student->trainning->title === $trainning->title) selected @endif >{{ $trainning->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -107,11 +107,11 @@
                                 <label class="col-sm-3 ">Pay type</label>
                                 <div class="col-sm-9 mt-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="pay_type" id="radio1" value='complet' >
+                                        <input class="form-check-input" type="radio" name="pay_type" id="radio1" value='complet' @if($student->pay_type === 'complet') checked @endif >
                                         <label class="form-check-label" for="radio1">Complet</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="pay_type" id="radio2" value='slice'  >
+                                        <input class="form-check-input" type="radio" name="pay_type" id="radio2" value='slice' @if($student->pay_type === 'slice') checked @endif >
                                         <label class="form-check-label" for="radio2">Slice</label>
                                     </div>
                                     @error('slice_pay || complet_pay')
