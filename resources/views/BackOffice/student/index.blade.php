@@ -35,6 +35,7 @@
                     <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
+                                <th>Matricule</th>
                                 <th>First name</th>
                                 <th>last_name</th>
                                 <th>email</th>
@@ -47,6 +48,7 @@
                         <tbody>
                             @foreach($students as $student)
                             <tr>
+                                <td>{{ $student->matricule }}</td>
                                 <td>{{ $student->first_name }}</td>
                                 <td>{{ $student->last_name }} </td>
                                 <td>{{ $student->email}}</td>
@@ -59,6 +61,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>Matricule</th>
                                 <th>First name</th>
                                 <th>last_name</th>
                                 <th>email</th>
