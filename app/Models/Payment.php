@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Student;
 
-class Trainning extends Model
+
+class Payment extends Model
 {
     use HasFactory;
 

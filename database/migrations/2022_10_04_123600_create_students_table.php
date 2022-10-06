@@ -26,9 +26,8 @@ return new class extends Migration
             $table->string('student_photo_path')->nullable();
             $table->string('parent_name');
             $table->integer('parent_phone');
-            $table->foreignId('trainning_id');
-            $table->string('complet_pay')->nullable();
-            $table->string('slice_pay')->nullable();
+            $table->foreignId('trainning_id')->constrained();
+            $table->string('pay_type');
             $table->timestamps();
         });
     }

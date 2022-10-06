@@ -415,19 +415,70 @@
                 </li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class="bx bx-folder"></i>
+                        </div>
+                        <div class="menu-title">Trainning</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('trainning.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
+                        </li>
+                        <li> <a href="{{ route('trainning.create') }}"><i class="bx bx-right-arrow-alt"></i>Add trainning</a>
+                        </li>
+                    </ul>
+                </li>
+            
+                <li>
+                    <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class="bx bx-category"></i>
                         </div>
                         <div class="menu-title">Student</div>
                     </a>
                     <ul>
-                        <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>List</a>
+                        <li> <a href="{{ route('student.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
                         </li>
-                        <li> <a href="dashboard-alternate.html"><i class="bx bx-right-arrow-alt"></i>Inscription</a>
+                        <li><a href="{{ route('student.create') }}"><i class="bx bx-right-arrow-alt"></i>Inscription</a>
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
+                        </div>
+                        <div class="menu-title">Payment</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('payment.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
+                        </li>
+                        <li> <a href="{{ route('payment.create') }}"><i class="bx bx-right-arrow-alt"></i>Installment </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                        </div>
+                        <div class="menu-title">Expenses</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('expense.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
+                        </li>
+                        <li> <a href="{{ route('expense.create') }}"><i class="bx bx-right-arrow-alt"></i>Installment </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><i class="bx bx-repeat"></i>
+                        </div>
+                        <div class="menu-title">Balance</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('balance.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
+                        </li>
+                      
+                    </ul>
 
-
+                </li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class='bx bx-cart'></i>
@@ -441,51 +492,6 @@
                         </li>
                     </ul>
 
-                </li>
-                <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
-                        </div>
-                        <div class="menu-title">Expenses</div>
-                    </a>
-                </li>
-                <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"><i class="bx bx-repeat"></i>
-                        </div>
-                        <div class="menu-title">Invoice</div>
-                    </a>
-
-                </li>
-                <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
-                        </div>
-                        <div class="menu-title">Receipt</div>
-                    </a>
-
-                </li>
-
-                <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
-                        </div>
-                        <div class="menu-title">Formations</div>
-                    </a>
-                    <ul>
-                        <li> <a href=""><i class="bx bx-right-arrow-alt"></i>List</a>
-                        </li>
-                        <li> <a href="dashboard-alternate.html"><i class="bx bx-right-arrow-alt"></i>Alternate</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="https://codervent.com/rocker/documentation/" target="_blank">
-                        <div class="parent-icon"><i class="bx bx-folder"></i>
-                        </div>
-                        <div class="menu-title">Documentation</div>
-                    </a>
                 </li>
                 <li>
                     <a href="https://themeforest.net/user/codervent" target="_blank">

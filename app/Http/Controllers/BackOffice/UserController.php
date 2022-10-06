@@ -127,7 +127,7 @@ $roles = Role::all();
             if ($request->file('image')) {
                 $file = $request->file('image');
                 @unlink(public_path('upload/user_images/' . $data->image));
-                $filename = date('YmdHi') . $file->getClientOriginalName();
+                $filename = date('YmdHi') .'_'. $request->first_name.$request->last_name.'.'.$file->extension();
                 $file->move(public_path('upload/user_images'), $filename);
                 $data->profile_photo_path = $filename; 
             }
