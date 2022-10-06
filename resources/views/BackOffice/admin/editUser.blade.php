@@ -39,11 +39,11 @@
                                 <label for="inputFirstName" class="col-sm-3 col-form-label">Gender</label>
                                 <div class="col-sm-9 mt-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="radio1" value='male' @if($student->gender == 'male') checked @endif>
+                                        <input class="form-check-input" type="radio" name="gender" id="radio1" value='male' @if($user->gender == 'male') checked @endif>
                                         <label class="form-check-label" for="radio1">Male</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="radio2" value='feminine'  @if($student->gender == 'feminine') checked @endif>
+                                        <input class="form-check-input" type="radio" name="gender" id="radio2" value='feminine'  @if($user->gender == 'feminine') checked @endif>
                                         <label class="form-check-label" for="radio2">Feminine</label>
                                     </div>
                                     @error('gender')

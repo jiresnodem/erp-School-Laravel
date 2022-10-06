@@ -158,7 +158,7 @@ class StudentController extends Controller
                 ->withInput();
         }
 
-        // try {
+        try {
             $data = Student::find($id);
             $data->first_name = $request->first_name;
             $data->last_name = $request->last_name;
@@ -182,9 +182,9 @@ class StudentController extends Controller
 
             $data->update();
            Toastr::success('Successfully !!!', 'Modification', ["positionClass" => "toast-top-right"]);
-        // } catch (Exception $e) {
-        //     Toastr::info('Failed!', 'Modification', ["positionClass" => "toast-top-right"]);
-        // } 
+        } catch (Exception $e) {
+            Toastr::info('Failed!', 'Modification', ["positionClass" => "toast-top-right"]);
+        } 
 
         return redirect()->route('student.list');
     }
