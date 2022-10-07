@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Validator;
 
 class ExpenseController extends Controller
@@ -26,24 +27,8 @@ class ExpenseController extends Controller
         return view('BackOffice.expenses.create');
     }
 
-    public function expenseStore(Request $request)
+    public function expenseStore(StorePostRequest $request)
     {
-
-        $validatedData = Validator::make($request->all(), [
-
-            'email' => 'required|unique:students',
-            'reason' => 'required',
-            'amount' => 'required',
-            'detail_reason' => 'required',
-
-        ]);
-
-        if ($validatedData->fails()) {
-            Toastr::error('Les champs ne peuvent pas etre vide !', 'Verify', ["positionClass" => "toast-top-right"]);
-            return redirect()->back()
-                ->withErrors($validatedData)
-                ->withInput();
-        }
 
         try {
            
@@ -68,24 +53,8 @@ class ExpenseController extends Controller
         return view('BackOffice.expenses.create', compact('expense'));
     }
 
-    public function updateStudent(Request $request, $id)
+    public function updateExpense(StorePostRequest $request, $id)
     {
-
-
-        $validatedData = Validator::make($request->all(), [
-            'email' => 'required|unique:students',
-            'reason' => 'required',
-            'amount' => 'required',
-            'detail_reason' => 'required',
-
-        ]);
-
-        if ($validatedData->fails()) {
-            Toastr::error('Les champs ne peuvent pas etre vide !', 'Verify', ["positionClass" => "toast-top-right"]);
-            return redirect()->back()
-                ->withErrors($validatedData)
-                ->withInput();
-        }
 
         try {
             $data = Expense::find($id);

@@ -96,7 +96,7 @@ class TrainningController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specifie       Route::get('trainnings', [TrainningController::class, 'index'])->name('trainning.list');d resource.
      *
      * @param  \App\Models\Formation  $formation
      * @return \Illuminate\Http\Response

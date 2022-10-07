@@ -406,7 +406,7 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="{{ route('dashboard') }}" >
                         <div class="parent-icon"><i class='bx bx-home-circle'></i>
                         </div>
                         <div class="menu-title">Dashboard</div>
@@ -462,7 +462,7 @@
                     <ul>
                         <li> <a href="{{ route('expense.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
                         </li>
-                        <li> <a href="{{ route('expense.create') }}"><i class="bx bx-right-arrow-alt"></i>Installment </a>
+                        <li> <a href="{{ route('expense.create') }}"><i class="bx bx-right-arrow-alt"></i>Add expense</a>
                         </li>
                     </ul>
                 </li>

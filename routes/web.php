@@ -65,7 +65,7 @@ route::prefix('/admin')->middleware(['auth', 'role:normal'])->group(
         Route::get('expense_create', [ExpenseController::class, 'createExpense'])->name('expense.create');
         Route::post('expense_add', [ExpenseController::class, 'expenseStore'])->name('expense.add');
         Route::get('expense_edit/{id}', [ExpenseController::class, 'editExpense'])->name('expense.edit');
-        Route::post('expense_update', [ExpenseController::class, 'epdateStudent'])->name('expense.update');
+        Route::post('expense_update/{id}', [ExpenseController::class, 'updateExpense'])->name('expense.update');
         Route::get('expense_delete/{id}', [ExpenseController::class, 'deleteExpense'])->name('expense.delete');
         Route::get('expense_show/{id}', [ExpenseController::class, 'showExpense'])->name('expense.show');
 
