@@ -113,7 +113,8 @@
                         <td>
                             <a href="{{ route('show.user', $user->id ) }}" class="btn btn-success">Show</a>
                             <a href="{{ route('user.edited', $user->id ) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ route('user.deleted', $user->id ) }}" class="btn btn-danger">Delete</a>
+                            <input type="submit" class="btn btn-danger" value='Delete' @if(  Auth::user()->first_name == 'Jires' ) disabled @endif>
+             
                         </td>
                     </tr>
                     @endforeach

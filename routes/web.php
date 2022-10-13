@@ -57,6 +57,7 @@ route::prefix('/admin')->middleware(['auth', 'role:normal'])->group(
         Route::get('payment_create', [PaymentController::class, 'createPayment'])->name('payment.create');
         Route::get('payment_type', [PaymentController::class, 'searchPaymentType'])->name('payment.type');
         Route::post('payment_add', [PaymentController::class, 'paymentStore'])->name('payment.add');
+        Route::post('slice_payment_add', [PaymentController::class, 'slicePaymentStore'])->name('slice.payment.add');
         Route::get('payment_delete/{id}', [PaymentController::class, 'deletePayment'])->name('payment.delete');
         Route::get('payment_show/{id}', [PaymentController::class, 'showPayment'])->name('payment.show');
 

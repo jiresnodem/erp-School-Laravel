@@ -40,9 +40,10 @@ class PaymentController extends Controller
             $data_trainning = Trainning::find($id);
             $total_payment = DB::table('payments')->where('student_id', $student->id)->sum('amount_pay');
         }
-
+        // dd($data_trainning->slices[0]->price);
         if (!empty($student)) {
             if ($student->pay_type === 'slice') {
+                // if(   $total_payment >= $trainning->amount){
 
                 return view('BackOffice.payment.slicePayment', compact('student', 'data_trainning', 'total_payment'));
             } elseif ($student->pay_type === 'complet') {
@@ -110,13 +111,104 @@ class PaymentController extends Controller
                 $trainning = Trainning::find($student->trainning_id);
 
                 $i = 1;
-                $pdf = PDF::loadView('BackOffice.invoice.invoice', ['student' => $student, 'trainning' => $trainning, 'amount_pay' => $request->amount_pay, 'i' => $i ]);
+                $pdf = PDF::loadView('BackOffice.invoice.invoice', ['student' => $student, 'trainning' => $trainning, 'amount_pay' => $request->amount_pay, 'i' => $i]);
 
                 $filename = 'invoice' . $student->last_name . $i . '.pdf';
-                $path = public_path('upload/invoice');
                 $pdf->save(public_path("upload/invoice/" . $filename));
                 //   $content = $pdf->download()->getOriginalContent();
                 return $pdf->stream();
+            } else {
+
+                Toastr::error('The amount entered does not correspond to the amount of the training fees!', 'Verify', ["positionClass" => "toast-top-right"]);
+                return redirect()->back();
+            }
+        } catch (Exception $e) {
+
+            Toastr::info('Faild!', 'Registration', ["positionClass" => "toast-top-right"]);
+        }
+        return  redirect()->route('dashboard');
+    }
+
+    public function slicePaymentStore(Request $request)
+    {
+
+        $validatedData = Validator::make($request->all(), [
+            'student_id' => 'required',
+            'trainning_id' => 'required',
+            'matricule' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'student_phone' => 'required',
+            'email' => 'required',
+            'trainning' => 'required',
+            'amount_pay' => 'required',
+
+
+        ]);
+
+        //   dd($validatedData);
+
+        if ($validatedData->fails()) {
+            Toastr::error('Les champs ne peuvent pas etre vide !', 'Verify', ["positionClass" => "toast-top-right"]);
+            return redirect()->back()
+                ->withErrors($validatedData)
+                ->withInput();
+        }
+
+        try {
+
+            $trainning = Trainning::find($request->trainning_id);
+
+            $total_paymentA = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
+
+            if ($total_paymentA == $trainning->amount) {
+
+                Toastr::info('Tuition has already been paid in full !!!', 'New', ["positionClass" => "toast-top-right"]);
+                return redirect()->back();
+            }
+
+
+            if ($request->amount_pay <=  $trainning->amount && $request->amount_pay > 0 ) {
+
+                if (($request->amount_pay + $total_paymentA) <=  $trainning->amount) {
+
+                    $balance = new Balance();
+                    $data = new Payment();
+                    $data->amount_pay = $request->amount_pay;
+                    $data->student_id = $request->student_id;
+                    $data->trainning_id = $request->trainning_id;
+                    $data->save();
+                    $balance->balance = $request->amount_pay;
+                    $balance->save();
+
+                    Toastr::success('Successfully !!!', 'Registration', ["positionClass" => "toast-top-right"]);
+
+                    $student = Student::find($request->student_id);
+                    $trainning = Trainning::find($student->trainning_id);
+                    // dd($student);
+                    $total_payment = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
+
+                    $i = 1;
+
+                    $pdf = PDF::loadView('BackOffice.invoice.invoiceSlice', [
+                        'student' => $student,
+                        'trainning' => $trainning,
+                        'amount_pay' => $request->amount_pay,
+                        'i' => $i,
+                        'total_paymentA' =>  $total_paymentA,
+                        'total_payment' =>  $total_payment,
+                        'trainning_amount' => $trainning->amount
+                    ]);
+
+                    $filename = 'invoice' . $student->last_name. random_int(1, 30) . '.pdf';
+                    $pdf->save(public_path("upload/invoice/" . $filename));
+                    //   $content = $pdf->download()->getOriginalContent();
+                    return $pdf->stream();
+                } else {
+
+                    Toastr::error('The amount entered is greater than the training fee !!!', 'Verify', ["positionClass" => "toast-top-right"]);
+                    return redirect()->back();
+                }
             } else {
 
                 Toastr::error('The amount entered does not correspond to the amount of the training fees!', 'Verify', ["positionClass" => "toast-top-right"]);

@@ -108,10 +108,10 @@
     <table class="order-details">
         <thead>
             <tr>
-                <th width="50%" colspan="2">
+                <th width="40%" colspan="1">
                     <h2 class="text-start">GETSMARTER</h2>
                 </th>
-                <th width="50%" colspan="2" class="text-end company-data">
+                <th width="60%" colspan="3" class="text-end company-data">
                     <span>Invoice Id: #6</span> <br>
                     <span>Date: {{ date('d / m / Y') }}</span> <br>
                     <span>Zip code : 560077</span> <br>
@@ -120,48 +120,56 @@
             </tr>
             <tr class="bg-blue">
 
-                <th>Student Details</th>
+                <th  colspan="4">Student Details</th>
             </tr>
         </thead>
         <tbody>
             <tr>
 
-                <td>Full Name:</td>
-                <td>{{ $student->first_name.''.$student->last_name }}</td>
+                <td colspan="1">Matricule:</td>
+                <td colspan="3">{{ $student->matricule }}</td>
 
             </tr>
             <tr>
 
-                <td>Email:</td>
-                <td>{{ $student->email }}</td>
+                <td colspan="1">Full Name:</td>
+                <td colspan="3">{{ $student->first_name.''.$student->last_name }}</td>
 
             </tr>
             <tr>
 
-                <td>Phone:</td>
-                <td>{{ $student->student_phone }}</td>
+                <td colspan="1">Email:</td>
+                <td colspan="3">{{ $student->email }}</td>
 
             </tr>
             <tr>
 
-                <td>Trainning:</td>
-                <td>{{ $trainning->title}}</td>
+                <td colspan="1">Phone:</td>
+                <td colspan="3">{{ $student->student_phone }}</td>
 
             </tr>
             <tr>
 
-                <td>Matricule:</td>
-                <td>{{ $student->matricule }}</td>
+                <td colspan="1">Trainning:</td>
+                <td colspan="3">{{ $trainning->title}}</td>
 
             </tr>
+            <tr>
+
+                <td colspan="1">Trainning:</td>
+                <td colspan="3">{{ $trainning->duration}}</td>
+
+            </tr>
+
+
         </tbody>
     </table>
 
     <table>
         <thead>
             <tr>
-                <th class="no-border text-start heading" colspan="5">
-                    Order Details
+                <th class="no-border text-start heading">
+                    Payment Details
                 </th>
             </tr>
             <tr class="bg-blue">
@@ -174,12 +182,12 @@
         <tbody>
             @foreach($trainning->slices as $slice)
             <tr>
-                <td >{{ $i++ }}</td>
+                <td>{{ $i++ }}</td>
                 <td>
-                  {{ $slice->name }}
+                    {{ $slice->name }}
                 </td>
-                <td>{{  $slice->price }}</td>
-                <td class="fw-bold">{{  $slice->price }} FCFA</td>
+                <td>{{ $slice->price }}</td>
+                <td class="fw-bold">{{ $slice->price }} FCFA</td>
             </tr>
             @endforeach
             <tr>
@@ -191,7 +199,7 @@
 
     <br>
     <p class="text-center">
-        Thank your for payment with GETSMARTER
+         GETSMARTER thanks you for your payment.
     </p>
 
 </body>
