@@ -112,7 +112,7 @@ class PaymentController extends Controller
 //   $content = $pdf->download()->getOriginalContent();
 //   $content->move(public_path('upload/invoice'), $filename);
 // dd($filename);
-        return $pdf->download($filename);
+        return $pdf->download($filename)->stream();
 
          return  redirect()->route('dashboard');
     }

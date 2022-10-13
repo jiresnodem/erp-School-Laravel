@@ -45,35 +45,6 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="first_slice" class="col-sm-3 col-form-label">First slice</label>
-                                <div class="col-sm-9">
-                                    <input type="number" name="first_slice" class="form-control @error('first_slice') is-invalid @enderror" id="first_slice" placeholder="" value="{{ isset($trainning->first_slice) ? $trainning->first_slice : ''}}">
-                                    @error('first_slice')
-                                    <p class="text mt-1 text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="second_slice" class="col-sm-3 col-form-label">Second slice</label>
-                                <div class="col-sm-9">
-                                    <input type="number" name="second_slice" class="form-control @error('second_slice') is-invalid @enderror" id="second_slice" placeholder="" value="{{ isset($trainning->second_slice) ? $trainning->second_slice : ''}}">
-                                    @error('second_slice')
-                                    <p class="text mt-1 text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="third_slice" class="col-sm-3 col-form-label">Third slice</label>
-                                <div class="col-sm-9">
-                                    <input type="number" name="third_slice" class="form-control @error('third_slice') is-invalid @enderror" id="third_slice" placeholder="" value="{{ isset($trainning->third_slice) ? $trainning->third_slice : ''}}">
-                                    @error('third_slice')
-                                    <p class="text mt-1 text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-               
-
-                            <div class="row mb-3">
                                 <label for="short_description" class="col-sm-3 col-form-label">Short description</label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control @error('duration') is-invalid @enderror" name="short_description" id="short_description" rows="3" placeholder="Short description">{{ isset($trainning->short_description)? $trainning->short_description :'' }}</textarea>

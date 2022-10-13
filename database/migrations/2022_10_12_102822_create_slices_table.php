@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('trainnings', function (Blueprint $table) {
-           
+        Schema::create('slices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->unique();
-            $table->string('duration');
-            $table->double('amount');
-            $table->string('short_description');
-            $table->string('long_description')->nullable();
-            $table->string('trainning_photo_path')->nullable();
+            $table->string('name');
+            $table->double('price');
+            $table->foreignId('trainning_id')->constrained();
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trainnings');
+        Schema::dropIfExists('slices');
     }
 };

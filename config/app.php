@@ -214,4 +214,5 @@ return [
     ])->toArray(),
     'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
 
+
 ];

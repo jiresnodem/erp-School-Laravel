@@ -47,9 +47,6 @@ class TrainningController extends Controller
 
             'title' => 'required|unique:trainnings|max:255',
             'amount' => 'required',
-            'first_slice' => 'required',
-            'second_slice' => 'required',
-            'third_slice' => 'required',
             'duration' => 'required',
             'short_description' => 'required',
 
@@ -63,14 +60,11 @@ class TrainningController extends Controller
         }
 
         try {
-            if ($request->amount == ($request->first_slice + $request->second_slice + $request->third_slice)) {
+           
                 $data = new Trainning();
                 $data->title = $request->title;
                 $data->duration = $request->duration;
                 $data->amount = $request->amount;
-                $data->first_slice = $request->first_slice;
-                $data->second_slice = $request->second_slice;
-                $data->third_slice = $request->third_slice;
                 $data->short_description = $request->short_description;
                 $data->long_description = $request->long_description;
 
@@ -81,13 +75,11 @@ class TrainningController extends Controller
                     $data->trainning_photo_path = $filename;
                     // dd($filename);
                 }
-            } else {
-                return redirect()->back()->withErrors(['amount' => 'The installment sum must be equal to the amount ']);
-            }
 
             $data->save();
             Toastr::success('Successfully !!!', 'Registration', ["positionClass" => "toast-top-right"]);
         } catch (Exception $e) {
+
             Toastr::info('Faild!', 'Registration', ["positionClass" => "toast-top-right"]);
         }
         return redirect()->back();
@@ -96,7 +88,7 @@ class TrainningController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specifie       Route::get('trainnings', [TrainningController::class, 'index'])->name('trainning.list');d resource.
      *
      * @param  \App\Models\Formation  $formation
      * @return \Illuminate\Http\Response
@@ -123,9 +115,6 @@ class TrainningController extends Controller
 
             'title' => 'required',
             'amount' =>  'required',
-            'first_slice' => 'required',
-            'second_slice' => 'required',
-            'third_slice' => 'required',
             'duration' => 'required',
             'short_description' => 'required',
 
@@ -133,14 +122,11 @@ class TrainningController extends Controller
         ]);
 
         try {
-            if ($request->amount == ($request->first_slice + $request->second_slice + $request->third_slice)) {
+           
         $data = Trainning::find($id);
         $data->title = $request->title;
         $data->duration = $request->duration;
         $data->amount = $request->amount;
-        $data->first_slice = $request->first_slice;
-        $data->second_slice = $request->second_slice;
-        $data->third_slice = $request->third_slice;
         $data->short_description = $request->short_description;
         $data->long_description = $request->long_description;
 
@@ -150,9 +136,6 @@ class TrainningController extends Controller
             $file->move(public_path('upload/trainning_images'), $filename);
             $data->trainning_photo_path = $filename;
         }
-    } else {
-        return redirect()->back()->withErrors(['amount' => 'The installment sum must be equal to the amount ']);
-    }
 
         $data->update();
         Toastr::success('Successfully !!!', 'Modification', ["positionClass" => "toast-top-right"]);

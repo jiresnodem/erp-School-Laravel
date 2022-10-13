@@ -8,6 +8,7 @@ use App\Http\Controllers\BackOffice\ExpenseController;
 use App\Http\Controllers\BackOffice\PaymentController;
 use App\Http\Controllers\BackOffice\StudentController;
 use App\Http\Controllers\BackOffice\DashboardController;
+use App\Http\Controllers\BackOffice\SliceController;
 use App\Http\Controllers\BackOffice\TrainningController;
 
 /*
@@ -60,12 +61,23 @@ route::prefix('/admin')->middleware(['auth', 'role:normal'])->group(
         Route::get('payment_show/{id}', [PaymentController::class, 'showPayment'])->name('payment.show');
 
 
+        //mananger slice
+        Route::get('slices', [SliceController::class, 'index'])->name('slice.list');
+        Route::get('trainning_choice', [SliceController::class, 'choiceTrainnig'])->name('trainning.choice');
+        Route::get('slice_create', [SliceController::class, 'create'])->name('slice.create');
+        Route::post('slice_add', [SliceController::class, 'store'])->name('slice.add');
+        Route::get('slice_edit/{id}', [SliceController::class, 'edit'])->name('slice.edit');
+        Route::post('slice_update/{id}', [SliceController::class, 'sliceUpdate'])->name('slice.update');
+        Route::get('return_slice_edit/{id}', [SliceController::class, 'returnCreate'])->name('return.create');
+        Route::get('slice_delete/{id}', [SliceController::class, 'deleteSlice'])->name('slice.delete');
+     
+
         //mananger expenses
         Route::get('expenses', [ExpenseController::class, 'index'])->name('expense.list');
         Route::get('expense_create', [ExpenseController::class, 'createExpense'])->name('expense.create');
         Route::post('expense_add', [ExpenseController::class, 'expenseStore'])->name('expense.add');
         Route::get('expense_edit/{id}', [ExpenseController::class, 'editExpense'])->name('expense.edit');
-        Route::post('expense_update', [ExpenseController::class, 'epdateStudent'])->name('expense.update');
+        Route::post('expense_update/{id}', [ExpenseController::class, 'updateExpense'])->name('expense.update');
         Route::get('expense_delete/{id}', [ExpenseController::class, 'deleteExpense'])->name('expense.delete');
         Route::get('expense_show/{id}', [ExpenseController::class, 'showExpense'])->name('expense.show');
 
