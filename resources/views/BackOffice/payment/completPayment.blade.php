@@ -26,6 +26,7 @@
 
 
                                 <input type="hidden" name="student_id" class="form-control" id="student_id" placeholder="Jhon" value="{{ $student->id  }}">
+                                <input type="hidden" name="trainning_id" class="form-control" id="trainning_id" placeholder="Jhon" value="{{ $data_trainning->id }}">
 
                             </div>
                             <div class="row mb-3">
@@ -73,12 +74,6 @@
                                     <input type="text" name="trainning" class="form-control" id="last_name" placeholder="Doe" value="{{ isset($data_trainning->title) ? $data_trainning->title : ''}}">
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="registration_fees" class="col-sm-3 col-form-label">Registration_fees </label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="registration_fees" class="form-control" id="registration_fees" placeholder=" 2022-dev254 or Jhon" value="{{ isset($student->registration_fees) ? $student->registration_fees :'' }}">
-                                </div>
-                            </div>
 
                             <div class="row mb-3">
                                 <label for="inputChoosePassword2" class="col-sm-3 col-form-label">Total amount</label>
@@ -89,7 +84,8 @@
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-sm-9">
-                                    <input type="submit" class="btn btn-info" value='Confirm'>
+                                    <input type="submit" class="btn btn-info" value='Confirm' @if( $total_payment == $data_trainning->amount )) disabled @endif>
+                                    @if( $total_payment == $data_trainning->amount ) <p class="mt-4">Schooling ok !!!</p> @endif
                                 </div>
                             </div>
                         </form>

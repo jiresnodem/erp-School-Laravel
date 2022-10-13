@@ -119,8 +119,8 @@
                 </th>
             </tr>
             <tr class="bg-blue">
-
-                <th>Student Details</th>
+                
+                <th >Student Details</th>
             </tr>
         </thead>
         <tbody>
@@ -172,19 +172,41 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($trainning->slices as $slice)
-            <tr>
-                <td >{{ $i++ }}</td>
+        <tr>
+                <td width="10%">1</td>
                 <td>
-                  {{ $slice->name }}
+                    Registration fees
                 </td>
-                <td>{{  $slice->price }}</td>
-                <td class="fw-bold">{{  $slice->price }} FCFA</td>
+                <td width="10%">{{ $student->registration_fees }}</td>
+                <td width="15%" class="fw-bold">{{ $student->registration_fees }} FCFA</td>
             </tr>
-            @endforeach
             <tr>
-                <td colspan="3" class="total-heading">Total Amount :</td>
-                <td colspan="1" class="total-heading">{{ $amount_pay }} FCFA</td>
+                <td width="10%">2</td>
+                <td>
+                    Fisrt slice
+                </td>
+                <td width="10%">{{ $trainning->first_slice }}</td>
+                <td width="15%" class="fw-bold">{{ $trainning->first_slice }} FCFA</td>
+            </tr>
+            <tr>
+                <td width="10%">3</td>
+                <td>
+                    Second slice
+                </td>
+                <td width="10%">{{ $trainning->second_slice }}</td>
+                <td width="15%" class="fw-bold">{{ $trainning->second_slice }} FCFA</td>
+            </tr>
+            <tr>
+                <td width="10%">4</td>
+                <td>
+                    third slice
+                </td>
+                <td width="10%">{{ $trainning->third_slice }}</td>
+                <td width="15%" class="fw-bold">{{ $trainning->third_slice }} FCFA</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="total-heading">Total Amount :</td>
+                <td colspan="1" class="total-heading">{{ $student->registration_fees + $trainning->first_slice + $trainning->second_slice + $trainning->first_slice }} FCFA</td>
             </tr>
         </tbody>
     </table>

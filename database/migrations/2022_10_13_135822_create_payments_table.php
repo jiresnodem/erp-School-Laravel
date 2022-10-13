@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->double('amount_pay');
             $table->foreignId('student_id')->constrained();
+            $table->foreignId('trainning_id')->constrained();
             $table->timestamps();
         });
     }
