@@ -22,8 +22,8 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-
         if (Auth::attempt($credentials)) {
+
             if (Auth::check()) {
                 $request->session()->regenerate();
                 Toastr::success('Successfull !!!', 'Connection', ["positionClass" => "toast-top-right"]);

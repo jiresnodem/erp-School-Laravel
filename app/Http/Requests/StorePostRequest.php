@@ -33,6 +33,7 @@ class StorePostRequest extends FormRequest
     public function messages(){
 
         return [
+            
             'reason.required' => 'The reason is required',
             'reason.max:255' => 'The reason is too long',
             'amount.required' => 'The amount is required',

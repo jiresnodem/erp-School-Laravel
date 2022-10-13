@@ -420,9 +420,9 @@
                         <div class="menu-title">Trainning</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('trainning.list') }}"><i class="bx bx-right-arrow-alt"></i>List</a>
-                        </li>
                         <li> <a href="{{ route('trainning.create') }}"><i class="bx bx-right-arrow-alt"></i>Add trainning</a>
+                        <li> <a href="{{ route('trainning.choice') }}"><i class="bx bx-right-arrow-alt"></i>create slice</a> 
+                        <li> <a href="{{ route('trainning.list') }}"><i class="bx bx-right-arrow-alt"></i>Trainning List</a></li>
                         </li>
                     </ul>
                 </li>

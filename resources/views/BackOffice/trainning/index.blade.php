@@ -38,10 +38,12 @@
                                 <th>Title</th>
                                 <th>Duration</th>
                                 <th>Amount</th>
+                                <th>Registration fees</th>
                                 <th>First slice</th>
                                 <th>Second slice</th>
-                                <th>third slice</th>
-
+                                <th>Third slice</th>
+                                <th>Fourth slice</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -50,9 +52,9 @@
                                 <td>{{ $trainning->title }}</td>
                                 <td>{{ $trainning->duration }} </td>
                                 <td>{{ $trainning->amount}} </td>
-                                <td>{{ $trainning->first_slice}}</td>
-                                <td>{{ $trainning->second_slice}}</td>
-                                <td>{{ $trainning->third_slice}} </td>
+                                @foreach($trainning->slices as $slice)
+                                <td>{{ $slice->price}}</td>
+                                @endforeach
 
                             </tr>
                             @endforeach
@@ -62,9 +64,11 @@
                                 <th>Title</th>
                                 <th>Duration</th>
                                 <th>Amount</th>
+                                <th>Registration fees</th>
                                 <th>First slice</th>
                                 <th>Second slice</th>
-                                <th>third slice</th>
+                                <th>Third slice</th>
+                                <th>Fourth slice</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -84,9 +88,7 @@
                         <th>Title</th>
                         <th>Duration</th>
                         <th>Amount</th>
-                        <th>First slice</th>
-                        <th>Second slice</th>
-                        <th>third slice</th>
+                     
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -96,9 +98,7 @@
                         <td>{{ $trainning->title }}</td>
                         <td>{{ $trainning->duration }} </td>
                         <td>{{ $trainning->amount}} </td>
-                        <td>{{ $trainning->first_slice}}</td>
-                        <td>{{ $trainning->second_slice}}</td>
-                        <td>{{ $trainning->third_slice}} </td>
+                    
                         <td>
                             <a href="{{ route('trainning.detail', $trainning->id ) }}" class="btn btn-success">Show</a>
                             <a href="{{ route('trainning.edit', $trainning->id ) }}" class="btn btn-primary">Edit</a>
