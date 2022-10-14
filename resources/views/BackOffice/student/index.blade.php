@@ -54,7 +54,11 @@
                                 <td>{{ $student->email}}</td>
                                 <td>{{ $student->trainning->title}}</td>
                                 <td>{{ $student->trainning->amount}}</td>
-                                <td>{{ $student->Remaining_amount}}</td>
+                                @if($student->payments->sum("amount_pay") == $student->trainning->amount )
+                                <td>Complet</td>
+                                @else
+                                <td>{{ $student->payments->sum("amount_pay") }} / {{ $student->trainning->amount}}</td>
+                                @endif
 
                             </tr>
                             @endforeach
@@ -102,11 +106,15 @@
                         <td>{{ $student->email}}</td>
                         <td>{{ $student->trainning->title}}</td>
                         <td>{{ $student->trainning->amount}}</td>
-                        <td>{{ $student->Remaining_amount}}</td>
-                        <td>
-                            <a href="{{ route('student.detail', $student->id ) }}" class="btn btn-success">Show</a>
-                            <a href="{{ route('student.edit', $student->id ) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ route('student.delete', $student->id ) }}" class="btn btn-danger">Delete</a>
+                        @if($student->payments->sum("amount_pay") == $student->trainning->amount )
+                        <td>Complet</td>
+                        @else
+                        <td>{{ $student->payments->sum("amount_pay") }} / {{ $student->trainning->amount}}</td>
+                        @endif
+                        <td class="d-flex">
+                            <a href="{{ route('student.detail', $student->id ) }}" class="btn btn-success mx-1">Show</a>
+                            <a href="{{ route('student.edit', $student->id ) }}" class="btn btn-primary mx-1">Edit</a>
+                            <a href="{{ route('student.delete', $student->id ) }}" class="btn btn-danger mx-1">Delete</a>
                         </td>
                     </tr>
                     @endforeach

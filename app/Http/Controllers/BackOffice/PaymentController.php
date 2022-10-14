@@ -110,10 +110,16 @@ class PaymentController extends Controller
                 $student = Student::find($request->student_id);
                 $trainning = Trainning::find($student->trainning_id);
 
-                $i = 1;
-                $pdf = PDF::loadView('BackOffice.invoice.invoice', ['student' => $student, 'trainning' => $trainning, 'amount_pay' => $request->amount_pay, 'i' => $i]);
 
                 $filename = 'invoice' . $student->last_name . $i . '.pdf';
+                $i = 1;
+                $pdf = PDF::loadView('BackOffice.invoice.invoice', [
+                    'student' => $student,
+                    'trainning' => $trainning,
+                    'amount_pay' => $request->amount_pay, 'i' => $i,
+                    'filename' =>    $filename
+                ]);
+
                 $pdf->save(public_path("upload/invoice/" . $filename));
                 //   $content = $pdf->download()->getOriginalContent();
                 return $pdf->stream();
@@ -142,8 +148,6 @@ class PaymentController extends Controller
             'email' => 'required',
             'trainning' => 'required',
             'amount_pay' => 'required',
-
-
         ]);
 
         //   dd($validatedData);
@@ -168,7 +172,7 @@ class PaymentController extends Controller
             }
 
 
-            if ($request->amount_pay <=  $trainning->amount && $request->amount_pay > 0 ) {
+            if ($request->amount_pay <=  $trainning->amount && $request->amount_pay > 0) {
 
                 if (($request->amount_pay + $total_paymentA) <=  $trainning->amount) {
 
@@ -188,19 +192,20 @@ class PaymentController extends Controller
                     // dd($student);
                     $total_payment = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
 
-                    $i = 1;
+
+                    $filename = 'invoice' . $student->last_name . random_int(1, 30) . '.pdf';
 
                     $pdf = PDF::loadView('BackOffice.invoice.invoiceSlice', [
                         'student' => $student,
                         'trainning' => $trainning,
                         'amount_pay' => $request->amount_pay,
-                        'i' => $i,
                         'total_paymentA' =>  $total_paymentA,
                         'total_payment' =>  $total_payment,
-                        'trainning_amount' => $trainning->amount
+                        'trainning_amount' => $trainning->amount,
+                        'filename' =>    $filename
                     ]);
 
-                    $filename = 'invoice' . $student->last_name. random_int(1, 30) . '.pdf';
+
                     $pdf->save(public_path("upload/invoice/" . $filename));
                     //   $content = $pdf->download()->getOriginalContent();
                     return $pdf->stream();

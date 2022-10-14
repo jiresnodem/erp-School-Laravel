@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
     <link href="assets/css/app.css" rel="stylesheet">
     <link href="assets/css/icons.css" rel="stylesheet">
-    <title>Dashtreme - Multipurpose Bootstrap5 Admin Template</title>
+    <title>Getsmarter</title>
 </head>
 
 <body class="bg-login">
@@ -30,8 +30,16 @@
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
                     <div class="col mx-auto">
-                        <div class="mb-4 text-center">
-                            <img src="assets/images/logo-img.png" width="180" alt="" />
+                        <div class="mb-4 text-center ">
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <img src="/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                                </div>
+                                <div>
+                                    <h4 class="logo-text">Getsmarter</h4>
+                                </div>
+
+                            </div>
                         </div>
                         <div class="card">
                             <div class="card-body">
@@ -41,7 +49,7 @@
                                         <p>Don't have an account yet? <a href="authentication-signup.html">Sign up here</a>
                                         </p>
                                     </div>
-                                 
+
                                     <div class="form-body">
                                         <form class="row g-3" action="{{ route('login') }}" methode='post'>
                                             @csrf
@@ -56,7 +64,7 @@
                                                 <label for="inputChoosePassword" class="form-label">Enter Password</label>
                                                 <div class="input-group" id="show_hide_password">
                                                     <input type="password" class="form-control border-end-0" id="inputChoosePassword" name="password" value="12345678" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
-                                              
+
                                                 </div>
                                                 @error('password')
                                                 <p class="text text-danger">{{ $message }}</p>

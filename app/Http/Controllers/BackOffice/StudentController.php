@@ -22,6 +22,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
+        // $total_payment = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
 
 
         return view('BackOffice.student.index', compact('students'));
