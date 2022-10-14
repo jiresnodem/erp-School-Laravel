@@ -18,6 +18,7 @@ return new class extends Migration
             $table->double('amount_pay');
             $table->foreignId('student_id')->constrained();
             $table->foreignId('trainning_id')->constrained();
+            $table->string('invoice_path');
             $table->timestamps();
         });
     }

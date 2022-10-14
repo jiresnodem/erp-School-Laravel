@@ -20,8 +20,9 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = Payment::all();
+        $sum_balance = DB::table('balances')->sum('balance'); 
 
-        return view('BackOffice.payment.index', compact('payments'));
+        return view('BackOffice.payment.index', compact('payments', 'sum_balance'));
     }
 
 
@@ -96,20 +97,24 @@ class PaymentController extends Controller
 
             if ($request->amount_pay ==  $trainning->amount) {
 
+                $student = Student::find($request->student_id);
+                $trainning = Trainning::find($student->trainning_id);
+                $i = 1;
+                $filename = 'invoice' . $student->last_name . $i . '.pdf';
+
                 $balance = new Balance();
                 $data = new Payment();
                 $data->amount_pay = $request->amount_pay;
                 $data->student_id = $request->student_id;
                 $data->trainning_id = $request->trainning_id;
+                $data->invoice_path = $filename;
                 $data->save();
                 $balance->balance = $request->amount_pay;
                 $balance->save();
 
                 Toastr::success('Successfully !!!', 'Registration', ["positionClass" => "toast-top-right"]);
 
-                $student = Student::find($request->student_id);
-                $trainning = Trainning::find($student->trainning_id);
-
+            
 
                 $filename = 'invoice' . $student->last_name . $i . '.pdf';
                 $i = 1;
@@ -176,6 +181,13 @@ class PaymentController extends Controller
 
                 if (($request->amount_pay + $total_paymentA) <=  $trainning->amount) {
 
+                    $student = Student::find($request->student_id);
+                    $trainning = Trainning::find($student->trainning_id);
+                    $total_payment = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
+
+
+                    $filename = 'invoice' . $student->last_name . random_int(1, 30) . '.pdf';
+
                     $balance = new Balance();
                     $data = new Payment();
                     $data->amount_pay = $request->amount_pay;
@@ -187,13 +199,7 @@ class PaymentController extends Controller
 
                     Toastr::success('Successfully !!!', 'Registration', ["positionClass" => "toast-top-right"]);
 
-                    $student = Student::find($request->student_id);
-                    $trainning = Trainning::find($student->trainning_id);
-                    // dd($student);
-                    $total_payment = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
-
-
-                    $filename = 'invoice' . $student->last_name . random_int(1, 30) . '.pdf';
+                
 
                     $pdf = PDF::loadView('BackOffice.invoice.invoiceSlice', [
                         'student' => $student,

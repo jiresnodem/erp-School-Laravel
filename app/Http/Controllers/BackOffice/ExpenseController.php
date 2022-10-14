@@ -84,8 +84,8 @@ class ExpenseController extends Controller
     {
         try {
 
-            $student = Expense::find($id);
-            $student->delete();
+            $expense = Expense::find($id);
+            $expense->delete();
             Toastr::success('Successfully !!!', 'Deletion', ["positionClass" => "toast-top-right"]);
         } catch (Exception $e) {
             Toastr::info('Failed!', 'Deletion', ["positionClass" => "toast-top-right"]);
