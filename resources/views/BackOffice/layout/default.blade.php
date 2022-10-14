@@ -408,7 +408,7 @@
             </div>
             <!--navigation-->
             <ul class="metismenu" id="menu">
-                <li>
+                <li href="javascript:;">
                     <a href="{{ route('dashboard') }}" >
                         <div class="parent-icon"><i class='bx bx-home-circle'></i>
                         </div>
@@ -432,7 +432,7 @@
             
                 <li>
                     <a  class="has-arrow">
-                        <div class="parent-icon"><i class="bx bx-category"></i>
+                        <div class="parent-icon"><i class="lni lni-graduation"></i>
                         </div>
                         <div class="menu-title">Student</div>
                     </a>
@@ -445,7 +445,7 @@
                 </li>
                 <li>
                     <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
+                        <div class="parent-icon"> <i class="lni lni-coin"></i>
                         </div>
                         <div class="menu-title">Payment</div>
                     </a>
@@ -471,7 +471,7 @@
                 </li>
                 <li>
                     <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"><i class="bx bx-repeat"></i>
+                        <div class="parent-icon"><i class="lni lni-wallet"></i>
                         </div>
                         <div class="menu-title">Balance</div>
                     </a>
@@ -484,7 +484,7 @@
                 </li>
                 <li>
                     <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class='bx bx-cart'></i>
+                        <div class="parent-icon"><i class='lni lni-users'></i>
                         </div>
                         <div class="menu-title">Administration</div>
                     </a>

@@ -17,6 +17,7 @@ class AuthController extends Controller
     
     public function login(Request $request)
     {
+        // dd(bcrypt('12345678'));
         $credentials = $request->validate([
             'email' => ['required'],
             'password' => ['required'],

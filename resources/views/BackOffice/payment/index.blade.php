@@ -50,7 +50,7 @@
                                 <td>{{ $payment->amount_pay }}</td>
                                 <td>{{ $payment->created_at }}</td>
                                 <td>
-                                    <a href="../public/upload/invoice/{{ $payment->invoice_path }}" class="btn btn-success">view</a>
+                                    <a href="../upload/invoice/{{ $payment->invoice_path }}" class="btn btn-success">view</a>
                                 </td>
 
                             </tr>
