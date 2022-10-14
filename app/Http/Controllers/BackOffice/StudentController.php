@@ -22,6 +22,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
+        // $total_payment = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
 
 
         return view('BackOffice.student.index', compact('students'));
@@ -50,7 +51,6 @@ class StudentController extends Controller
             'first_name' => 'required',
             'student_phone' => 'required',
             'trainning_id' => 'required',
-            'registration_fees' => 'required',
             'pay_type' => 'required',
             'image' => 'mimes:jpg,png,jpeg|max:5048'
 
@@ -77,7 +77,6 @@ class StudentController extends Controller
             $data->gender = $request->gender;
             $data->student_phone = $request->student_phone;
             $data->matricule = $matricule;
-            $data->registration_fees = $request->registration_fees;
             $data->parent_name = $request->parent_name;
             $data->parent_phone = $request->parent_phone;
             $data->pay_type = $request->pay_type;
@@ -146,7 +145,6 @@ class StudentController extends Controller
             'first_name' => 'required',
             'student_phone' => 'required',
             'trainning_id' => 'required',
-            'registration_fees' => 'required',
             'pay_type' => 'required',
             'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);

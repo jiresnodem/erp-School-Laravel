@@ -39,11 +39,11 @@
                                 <label for="inputFirstName" class="col-sm-3 col-form-label">Gender</label>
                                 <div class="col-sm-9 mt-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="radio1" value='male'   >
+                                        <input class="form-check-input" type="radio" name="gender" id="radio1" value='male'>
                                         <label class="form-check-label" for="radio1">Male</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="radio2" value='feminine'  >
+                                        <input class="form-check-input" type="radio" name="gender" id="radio2" value='feminine'>
                                         <label class="form-check-label" for="radio2">Feminine</label>
                                     </div>
                                     @error('gender')
@@ -55,7 +55,7 @@
                             <div class="row mb-3">
                                 <label for="student_phone" class="col-sm-3 col-form-label">Phone No</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="student_phone" class="form-control" id="student_phone" placeholder="Phone No" value="{{ isset($student->student_phone) ? $student->student_phone : '' }}" >
+                                    <input type="text" name="student_phone" class="form-control" id="student_phone" placeholder="Phone No" value="{{ isset($student->student_phone) ? $student->student_phone : '' }}">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -76,8 +76,8 @@
                             <div class="row mb-3">
                                 <label for="student_photo_path" class="col-sm-3 col-form-label">Trainning picture</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control-file" name="image" id="student_photo_path"  value="{{isset($student->student_photo_path)? $student->student_photo_path :""}}" accept=".png, .jpg, .jpeg">
-                                  
+                                    <input type="file" class="form-control-file" name="image" id="student_photo_path" value="{{isset($student->student_photo_path)? $student->student_photo_path :""}}" accept=".png, .jpg, .jpeg">
+
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -97,7 +97,7 @@
                                 <div class="col-sm-9">
                                     <select name="trainning_id" class="form-control">
                                         @foreach($trainnings as $trainning)
-                                        <option value="{{ $trainning->id }}"   >{{ $trainning->title }}</option>
+                                        <option value="{{ $trainning->id }}">{{ $trainning->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -107,11 +107,11 @@
                                 <label class="col-sm-3 ">Pay type</label>
                                 <div class="col-sm-9 mt-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="pay_type" id="radio1" value='complet' >
+                                        <input class="form-check-input" type="radio" name="pay_type" id="radio1" value='complet'>
                                         <label class="form-check-label" for="radio1">Complet</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="pay_type" id="radio2" value='slice'  >
+                                        <input class="form-check-input" type="radio" name="pay_type" id="radio2" value='slice'>
                                         <label class="form-check-label" for="radio2">Slice</label>
                                     </div>
                                     @error('slice_pay || complet_pay')
@@ -119,15 +119,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-
-                            <div class="row mb-3">
-                                <label for="registration_fees" class="col-sm-3 col-form-label">Registration fees</label>
-                                <div class="col-sm-9">
-                                    <input type="number" name="registration_fees" class="form-control" id="registration_fees" placeholder="Bonamoussadi" value="{{ isset($student->registration_fees) ? $student->registration_fees:'50000' }}">
-                                </div>
-                            </div>
-
 
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>

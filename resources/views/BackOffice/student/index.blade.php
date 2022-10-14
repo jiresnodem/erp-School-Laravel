@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Tables</div>
+        <div class="breadcrumb-title pe-3">Students</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
+                    <li class="breadcrumb-item active" aria-current="page">Student Table</li>
                 </ol>
             </nav>
         </div>
@@ -54,7 +54,11 @@
                                 <td>{{ $student->email}}</td>
                                 <td>{{ $student->trainning->title}}</td>
                                 <td>{{ $student->trainning->amount}}</td>
-                                <td>{{ $student->Remaining_amount}}</td>
+                                @if($student->payments->sum("amount_pay") == $student->trainning->amount )
+                                <td>Complet</td>
+                                @else
+                                <td>{{ $student->payments->sum("amount_pay") }} / {{ $student->trainning->amount}}</td>
+                                @endif
 
                             </tr>
                             @endforeach
@@ -102,11 +106,15 @@
                         <td>{{ $student->email}}</td>
                         <td>{{ $student->trainning->title}}</td>
                         <td>{{ $student->trainning->amount}}</td>
-                        <td>{{ $student->Remaining_amount}}</td>
-                        <td>
-                            <a href="{{ route('student.detail', $student->id ) }}" class="btn btn-success">Show</a>
-                            <a href="{{ route('student.edit', $student->id ) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ route('student.delete', $student->id ) }}" class="btn btn-danger">Delete</a>
+                        @if($student->payments->sum("amount_pay") == $student->trainning->amount )
+                        <td>Complet</td>
+                        @else
+                        <td>{{ $student->payments->sum("amount_pay") }} / {{ $student->trainning->amount}}</td>
+                        @endif
+                        <td class="d-flex">
+                            <a href="{{ route('student.detail', $student->id ) }}" class="btn btn-success mx-1">Show</a>
+                            <a href="{{ route('student.edit', $student->id ) }}" class="btn btn-primary mx-1">Edit</a>
+                            <a href="{{ route('student.delete', $student->id ) }}" class="btn btn-danger mx-1">Delete</a>
                         </td>
                     </tr>
                     @endforeach

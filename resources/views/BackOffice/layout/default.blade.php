@@ -7,30 +7,33 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--favicon-->
-    <link rel="icon" href="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-    <link href="/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <!-- loader-->
-    <link href="/assets/css/pace.min.css" rel="stylesheet" />
-    <script src="/assets/js/pace.min.js"></script>
-    <!-- Bootstrap CSS -->
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
-    <link href="/assets/css/app.css" rel="stylesheet">
-    <link href="/assets/css/icons.css" rel="stylesheet">
+  	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="/assets/images/favicon-32x32.png" type="image/png" />
+	<!--plugins-->
+	    <link href="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
+	<link href="/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+	<link href="/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<!-- loader-->
+	<link href="/assets/css/pace.min.css" rel="stylesheet" />
+	<script src="/assets/js/pace.min.js"></script>
+	<!-- Bootstrap CSS -->
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+	<link href="/assets/css/app.css" rel="stylesheet">
+	<link href="/assets/css/icons.css" rel="stylesheet">
 
     <!-- Theme Style CSS -->
     <link rel="stylesheet" href="/assets/css/dark-theme.css" />
     <link rel="stylesheet" href="/assets/css/semi-dark.css" />
     <link rel="stylesheet" href="/assets/css/header-colors.css" />
+
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
-    <title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+    <title>Getsmarter</title>
 </head>
 
 <body>
@@ -398,7 +401,7 @@
                     <img src="/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
-                    <h4 class="logo-text">Rocker</h4>
+                    <h4 class="logo-text">Getsmarter</h4>
                 </div>
                 <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
                 </div>
@@ -428,7 +431,7 @@
                 </li>
             
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a  class="has-arrow">
                         <div class="parent-icon"><i class="bx bx-category"></i>
                         </div>
                         <div class="menu-title">Student</div>
@@ -493,13 +496,7 @@
                     </ul>
 
                 </li>
-                <li>
-                    <a href="https://themeforest.net/user/codervent" target="_blank">
-                        <div class="parent-icon"><i class="bx bx-support"></i>
-                        </div>
-                        <div class="menu-title">Support</div>
-                    </a>
-                </li>
+              
             </ul>
             <!--end navigation-->
         </div>
@@ -617,17 +614,17 @@
             </div>
         </div>
     </div>
-    <!--end switcher-->
-    <!-- Bootstrap JS -->
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <!--plugins-->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <!--app JS-->
-    <script src="/assets/js/app.js"></script>
-    <script src="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+   <!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+	<!--plugins-->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<!--app JS-->
+	<script src="/assets/js/app.js"></script>
+	    <script src="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="/assets/plugins/chartjs/js/Chart.min.js"></script>
     <script src="/assets/plugins/chartjs/js/Chart.extension.js"></script>
@@ -638,7 +635,7 @@
     {!! Toastr::message() !!}
 
 
-    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/app.js')}}"></script>
     <script src="/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
     

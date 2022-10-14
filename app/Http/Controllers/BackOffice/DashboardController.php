@@ -17,7 +17,8 @@ class DashboardController extends Controller
     $sum_student = DB::table('students')->count();
     $sum_trainning = DB::table('trainnings')->count();
     $sum_expense = DB::table('expenses')->sum('amount');
+    $balance = ( $sum_balance - $sum_expense);
 
-    return view('BackOffice.dashboard.dashboard', compact('balance', 'sum_balance', 'sum_student', 'sum_trainning', 'sum_expense'));
+    return view('BackOffice.dashboard.dashboard', compact('balance', 'sum_balance', 'sum_student', 'sum_trainning', 'sum_expense', 'balance'));
   }
 }

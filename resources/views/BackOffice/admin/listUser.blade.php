@@ -6,13 +6,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Tables</div>
+        <div class="breadcrumb-title pe-3">Users</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
+                    <li class="breadcrumb-item active" aria-current="page">User Table</li>
                 </ol>
             </nav>
         </div>
@@ -113,7 +113,8 @@
                         <td>
                             <a href="{{ route('show.user', $user->id ) }}" class="btn btn-success">Show</a>
                             <a href="{{ route('user.edited', $user->id ) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ route('user.deleted', $user->id ) }}" class="btn btn-danger">Delete</a>
+                            <input type="submit" class="btn btn-danger" value='Delete' @if( Auth::user()->last_name == 'Nodem' ) disabled @endif>
+             
                         </td>
                     </tr>
                     @endforeach

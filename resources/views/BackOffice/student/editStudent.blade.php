@@ -120,15 +120,6 @@
                                 </div>
                             </div>
 
-
-                            <div class="row mb-3">
-                                <label for="registration_fees" class="col-sm-3 col-form-label">Registration fees</label>
-                                <div class="col-sm-9">
-                                    <input type="number" name="registration_fees" class="form-control" id="registration_fees" placeholder="Bonamoussadi" value="{{ isset($student->registration_fees) ? $student->registration_fees:'50000' }}">
-                                </div>
-                            </div>
-
-
                             <div class="row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-sm-9">

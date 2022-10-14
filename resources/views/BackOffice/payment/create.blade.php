@@ -21,9 +21,9 @@
                         <form action="{{ isset($student->id) ? route('student.update', [$student->id]) : route('payment.type') }}" method="get" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
-                                <label for="first_name" class="col-sm-3 col-form-label">Matricule or Last name</label>
+                                <label for="maricule" class="col-sm-3 col-form-label">Matricule or Last name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="maricule_lastname" class="form-control" id="first_name" placeholder=" 2022-dev254 or Jhon" value="{{ isset($student->first_name) ? $student->first_name :'' }}">
+                                    <input type="text" name="maricule" class="form-control" id="maricule" placeholder=" 2022-dev254 or Jhon" value="{{ isset($student->first_name) ? $student->first_name :'' }}">
                                 </div>
                             </div>
 

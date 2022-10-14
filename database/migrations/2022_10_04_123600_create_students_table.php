@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('gender');
             $table->integer('student_phone');
             $table->string('matricule');
-            $table->string('registration_fees');
             $table->string('student_photo_path')->nullable();
             $table->string('parent_name');
             $table->integer('parent_phone');
