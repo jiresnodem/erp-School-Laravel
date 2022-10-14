@@ -7,7 +7,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
-  <!-- Required meta tags -->
+  	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="/assets/css/dark-theme.css" />
     <link rel="stylesheet" href="/assets/css/semi-dark.css" />
     <link rel="stylesheet" href="/assets/css/header-colors.css" />
+
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
     <title>Getsmarter</title>
@@ -397,7 +398,7 @@
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="../assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                    <img src="/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
                     <h4 class="logo-text">Getsmarter</h4>
@@ -613,22 +614,22 @@
             </div>
         </div>
     </div>
-    <!--end switcher-->
-    <!-- Bootstrap JS -->
-    <script src="/assets/js/bootstrap.bundle.min.js) "></script>
-    <!--plugins-->
-    <script src="/assets/js/jquery.min.js'"></script>
-    <script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="/asset('assets/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <!--app JS-->
-    <script src="/assets/js/app.js')}}"></script>
-    <script src="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+   <!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+	<!--plugins-->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<!--app JS-->
+	<script src="/assets/js/app.js"></script>
+	    <script src="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="/assets/plugins/chartjs/js/Chart.min.js"></script>
     <script src="/assets/plugins/chartjs/js/Chart.extension.js"></script>
     <script src="/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="/assets/js/index.js')}}"></script>
+    <script src="/assets/js/index.js"></script>
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     {!! Toastr::message() !!}

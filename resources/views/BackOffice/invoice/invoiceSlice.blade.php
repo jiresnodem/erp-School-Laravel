@@ -199,6 +199,7 @@
                 </tr>
                 @endif
 
+                @if( isset($trainning->slices[1]->name ) )
                 @if($total_payment < $trainning->slices[0]->price + $trainning->slices[1]->price )
                     @if($total_payment > $trainning->slices[0]->price )
                     <tr>
@@ -230,9 +231,10 @@
                         <td width="15%" class="fw-bold">{{ $trainning->slices[1]->price }} FCFA</td>
                     </tr>
                     @endif
+                    @endif
 
 
-
+                    @if( isset($trainning->slices[2]->name ) )
                     @if($total_payment < $trainning->slices[0]->price + $trainning->slices[1]->price + $trainning->slices[2]->price )
                         @if($total_payment > $trainning->slices[0]->price + $trainning->slices[1]->price)
                         <tr>
@@ -264,9 +266,10 @@
                             <td width="15%" class="fw-bold">{{ $trainning->slices[2]->price }} FCFA</td>
                         </tr>
                         @endif
+                        @endif
 
 
-
+                        @if( isset($trainning->slices[3]->name ) )
                         @if($total_payment < $trainning->slices[0]->price + $trainning->slices[1]->price + $trainning->slices[2]->price + $trainning->slices[3]->price )
                             @if($total_payment > $trainning->slices[0]->price + $trainning->slices[1]->price + $trainning->slices[2]->price )
                             <tr>
@@ -281,7 +284,7 @@
                             <tr>
                                 <td width="10%">4</td>
                                 <td>
-                                    {{ $trainning->slices[2]->name }}
+                                    {{ $trainning->slices[3]->name }}
                                 </td>
                                 <td width="10%">{{ $trainning->slices[3]->price }}</td>
                                 <td width="15%" class="fw-bold">{{ 0 }} FCFA</td>
@@ -298,10 +301,12 @@
                                 <td width="15%" class="fw-bold">{{ $trainning->slices[3]->price }} FCFA</td>
                             </tr>
                             @endif
+                            @endif
 
 
 
-                            @if($total_payment < $trainning->slices[0]->price + $trainning->slices[1]->price + $trainning->slices[2]->price + $trainning->slices[3]->price + $trainning->slices[4]->price )
+                           @if( isset($trainning->slices[4]->name ) )
+                           @if($total_payment < $trainning->slices[0]->price + $trainning->slices[1]->price + $trainning->slices[2]->price + $trainning->slices[3]->price + $trainning->slices[4]->price )
                                 @if($total_payment >= $trainning->slices[0]->price + $trainning->slices[1]->price + $trainning->slices[2]->price + $trainning->slices[3]->price )
                                 <tr>
                                     <td width="10%">5</td>
@@ -332,6 +337,7 @@
                                     <td width="15%" class="fw-bold">{{ $trainning->slices[4]->price }} FCFA</td>
                                 </tr>
                                 @endif
+                           @endif
 
                                 <tr>
                                     <td colspan="3" class="total-heading">Total Amount paid :</td>

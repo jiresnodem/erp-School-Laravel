@@ -183,7 +183,7 @@ class PaymentController extends Controller
 
                     $student = Student::find($request->student_id);
                     $trainning = Trainning::find($student->trainning_id);
-                    $total_payment = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
+                    
 
 
                     $filename = 'invoice' . $student->last_name . random_int(1, 30) . '.pdf';
@@ -193,6 +193,7 @@ class PaymentController extends Controller
                     $data->amount_pay = $request->amount_pay;
                     $data->student_id = $request->student_id;
                     $data->trainning_id = $request->trainning_id;
+                    $data->invoice_path = $filename;
                     $data->save();
                     $balance->balance = $request->amount_pay;
                     $balance->save();
@@ -200,7 +201,7 @@ class PaymentController extends Controller
                     Toastr::success('Successfully !!!', 'Registration', ["positionClass" => "toast-top-right"]);
 
                 
-
+                    $total_payment = DB::table('payments')->where('student_id', $request->student_id)->sum('amount_pay');
                     $pdf = PDF::loadView('BackOffice.invoice.invoiceSlice', [
                         'student' => $student,
                         'trainning' => $trainning,
