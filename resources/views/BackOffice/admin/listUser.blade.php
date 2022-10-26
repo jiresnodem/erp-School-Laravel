@@ -55,12 +55,12 @@
                                 <td>{{ $user->phone}}</td>
                                 <td>{{ $user->address}} </td>
                                 <td>{{ $user->post_description}} </td>
-                                <td >
-                                @foreach($user->roles as $role)
-                                {{ $role->name }}<br>
-                                @endforeach
+                                <td>
+                                    @foreach($user->roles as $role)
+                                    {{ $role->name }}<br>
+                                    @endforeach
                                 </td>
-                              
+
                             </tr>
                             @endforeach
                         </tbody>
@@ -105,16 +105,16 @@
                         <td>{{ $user->last_name }} </td>
                         <td>{{ $user->email}}</td>
                         <td>{{ $user->phone}}</td>
-                        <td >
-                                @foreach($user->roles as $role)
-                                {{ $role->name }}<br>
-                                @endforeach
-                                </td>
+                        <td>
+                            @foreach($user->roles as $role)
+                            {{ $role->name }}<br>
+                            @endforeach
+                        </td>
                         <td>
                             <a href="{{ route('show.user', $user->id ) }}" class="btn btn-success">Show</a>
-                            <a href="{{ route('user.edited', $user->id ) }}" class="btn btn-primary">Edit</a>
-                            <input type="submit" class="btn btn-danger" value='Delete' @if( Auth::user()->last_name == 'Nodem' ) disabled @endif>
-             
+                            <a href="{{ route('user.edited', $user->id ) }}" class="btn btn-primary">Edit{{Auth::user()->roles[0]->name}}</a>
+                            <input type="submit" class="btn btn-danger" value='Delete' @if( Auth::user()->roles[0]->name == 'superadmin' ) disabled @endif>
+
                         </td>
                     </tr>
                     @endforeach

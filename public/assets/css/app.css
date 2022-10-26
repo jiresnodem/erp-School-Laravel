@@ -235,7 +235,7 @@ a {
 	letter-spacing: .5px
 }
 
-.metismenu .has-arrow:after {
+.metismenu .has-arrow::after {
 	position: absolute;
 	content: "";
 	width: .5em;

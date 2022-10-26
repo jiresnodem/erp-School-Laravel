@@ -16,15 +16,15 @@ class SliceController extends Model
 {
     use HasFactory;
 
-    public function index(Request $request)
-    {
+    // public function index(Request $request)
+    // {
 
-        $slices = Trainning::all();
-        if ($request->wantsJson()) {
-            return response()->json(["trainning_list" => $slices]);
-        }
-        return view("trainning.index", compact('slices'));
-    }
+    //     $slices = Trainning::all();
+    //     if ($request->wantsJson()) {
+    //         return response()->json(["trainning_list" => $slices]);
+    //     }
+    //     return view("trainning.index", compact('slices'));
+    // }
 
     public function choiceTrainnig()
     {
@@ -117,10 +117,12 @@ class SliceController extends Model
                     return back()->withErrors(['price' => 'The amount between exceeds the remaining amount']);
                 }
             }
+
         } catch (Exception $ex) {
             Toastr::error('an error occured', '', ["positionClass" => "toast-top-right"]);
         }
     }
+
 
     public function edit(Request $request, $id)
 {
@@ -140,13 +142,22 @@ class SliceController extends Model
     {
         $trainning = Trainning::find($request->trainning_id);
         try {
+            if ($request->price == 0 || $request->price < 0) {
+
+                Toastr::info('', 'Verify', ["positionClass" => "toast-top-center"]);
+                return back()->withErrors([
+                    'price' => 'The amount cannot be null or equal to zero',
+                    'name' => 'The name cannot be null'
+                ]);
+            }
+
             if ($trainning->amount > $request->price) {
                 $slice = Slice::find($id);
                 $slice->name = $request->name;
                 $slice->price = $request->price;
                 $slice->save();
                 Toastr::success('Successfully !!!', 'Modification', ["positionClass" => "toast-top-right"]);
-                return redirect()->route('return.create', [$request->trainning_id, ]);
+                return redirect()->route('return.create', [$request->trainning_id ]);
             }
         } catch (Exception $ex) {
             dd($ex);
